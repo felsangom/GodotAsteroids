@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/images/spaceship_trottle_2.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/spaceship.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/spaceship_trottle_3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/spaceship_trottle_1.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Spaceship.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Missile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sfx/playerhit.wav" type="AudioStream" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "throttle",
+"speed": 10.0
+} ]
+
+[node name="Spaceship" type="KinematicBody2D"]
+rotation = -1.5708
+script = ExtResource( 5 )
+Missile = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 32.0212, 0.0906883, -9.4496, 32.3345, -10.0446, -32.0542 )
+
+[node name="MissileCooldown" type="Timer" parent="."]
+
+[node name="DamageCooldown" type="Timer" parent="."]
+
+[node name="TookDamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="timeout" from="MissileCooldown" to="." method="_on_MissileCooldown_timeout"]
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_DamageCooldown_timeout"]
