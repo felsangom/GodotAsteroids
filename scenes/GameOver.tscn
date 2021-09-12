@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/images/bg.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/space age.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/GameOver.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.141176, 0.14902, 0.560784, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.00784314, 0.0156863, 0.243137, 1 )
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.176268, 0.113792, 0.766602, 1, 0.31961, 0.308094, 0.543945, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 6 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = SubResource( 2 )
+region_rect = Rect2( 0, 0, 2048, 1 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -240.5
+margin_top = 100.0
+margin_right = 240.5
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 3 )
+text = "GAME OVER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pontuação" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -92.5
+margin_top = 175.0
+margin_right = 92.5
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 9 )
+text = "Pontuação"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pontos" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 200.0
+margin_right = 20.0
+margin_bottom = 31.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 10 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -221.0
+margin_top = 300.0
+margin_right = 221.0
+margin_bottom = 41.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+text = "Jogar novamente"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_Restart_pressed"]

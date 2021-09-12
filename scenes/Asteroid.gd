@@ -10,9 +10,9 @@ var sprites = [
 ]
 
 export (bool) var small = false
-export (int) var min_speed = 50
-export (int) var max_speed = 150
-export (int) var rotation_speed = 1
+export (int) var min_speed = 150
+export (int) var max_speed = 250
+export (int) var rotation_speed = 3
 var rotation_direction = 0
 
 func spawn():

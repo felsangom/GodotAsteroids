@@ -4,6 +4,7 @@ export (PackedScene) var Asteroid
 export (PackedScene) var Explosion
 
 func _ready():
+	Global.score = 0
 	randomize()
 
 func _on_Spaceship_shoot(missile, _position, _direction):
@@ -42,18 +43,37 @@ func _on_Asteroid_Destroy(asteroid):
 	var asteroid_scale = asteroid.scale
 	asteroid.destroy()
 
-	var explosion = Explosion.instance()
-	explosion.position = asteroid_position
-	add_child(explosion)
-	$ExplosionSound.play()
-	explosion.explode()
+	play_explosion(asteroid_position)
 
 	if !is_small_asteroid:
+		Global.score += 25
 		var smaller_asteroids = 0
 		while smaller_asteroids < 3:
 			spawn_asteroid(asteroid_scale / 2, asteroid_position, true)
 			smaller_asteroids += 1
+	else:
+		Global.score += 5
+	
+	update_score()
 
+func play_explosion(position):
+	var explosion = Explosion.instance()
+	explosion.position = position
+	add_child(explosion)
+	$ExplosionSound.play()
+	explosion.explode()
+
+func update_score():
+	$HUD/Score.text = str(Global.score)
 
 func _on_Spaceship_took_damage():
-	$SpaceshipHealth.value = $Spaceship.health
+	$HUD/SpaceshipHealth.value = $Spaceship.health
+
+	if $Spaceship.health == 0:
+		$Spaceship/CollisionPolygon2D.set_deferred("disabled", true)
+		$Spaceship.visible = false
+		play_explosion($Spaceship.global_position)
+		$GameOverSound.play()
+
+func _on_GameOverSound_finished():
+	Global.goto_scene("res://scenes/GameOver.tscn")
