@@ -71,8 +71,8 @@ func _on_Spaceship_took_damage():
 
 	if $Spaceship.health == 0:
 		$Spaceship/CollisionPolygon2D.set_deferred("disabled", true)
-		$Spaceship.visible = false
 		play_explosion($Spaceship.global_position)
+		$Spaceship.call_deferred("queue_free")
 		$GameOverSound.play()
 
 func _on_GameOverSound_finished():
