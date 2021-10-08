@@ -5,27 +5,27 @@
 [ext_resource path="res://assets/fonts/space age.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=4]
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.141176, 0.14902, 0.560784, 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.00784314, 0.0156863, 0.243137, 1 )
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 0.176268, 0.113792, 0.766602, 1, 0.31961, 0.308094, 0.543945, 1 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = SubResource( 7 )
+[sub_resource type="StyleBoxTexture" id=5]
+texture = SubResource( 4 )
 region_rect = Rect2( 0, 0, 2048, 1 )
 margin_left = 10.0
 margin_right = 10.0
 margin_top = 5.0
 margin_bottom = 5.0
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 32
 font_data = ExtResource( 3 )
 
@@ -64,10 +64,10 @@ margin_left = -68.0
 margin_top = 300.0
 margin_right = 68.0
 margin_bottom = 31.0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Iniciar"
 __meta__ = {
 "_edit_use_anchors_": false
