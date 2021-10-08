@@ -9,10 +9,10 @@ Asteroids like game made with Godot Engine.
 
 # Screenshots
 
-![](https://github.com/felsangom/GodotAsteroids/blob/main/screenshots/start.png)
-![](https://github.com/felsangom/GodotAsteroids/blob/main/screenshots/game.png)
-![](https://github.com/felsangom/GodotAsteroids/blob/main/screenshots/game2.png)
-![](https://github.com/felsangom/GodotAsteroids/blob/main/screenshots/gameover.png)
+![](https://raw.githubusercontent.com/felsangom/GodotAsteroids/master/screenshots/start.png)
+![](https://raw.githubusercontent.com/felsangom/GodotAsteroids/master/screenshots/game.png)
+![](https://raw.githubusercontent.com/felsangom/GodotAsteroids/master/screenshots/game2.png)
+![](https://raw.githubusercontent.com/felsangom/GodotAsteroids/master/screenshots/gameover.png)
 
 # License
 
